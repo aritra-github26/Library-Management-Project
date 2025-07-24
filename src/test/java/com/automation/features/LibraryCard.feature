@@ -2,5 +2,5 @@
 Feature: Get a Library Card
   # Enter feature description here
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Library Card Registration Working
+    Given Open the Get a Library Card page
