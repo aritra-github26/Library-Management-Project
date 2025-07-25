@@ -56,6 +56,24 @@ public class LibraryCardPageActions {
     @FindBy(id = "idcard")
     public WebElement generatedIDCard;
 
+    @FindBy(id = "idname")
+    public WebElement nameInCard;
+
+    @FindBy(id = "idage")
+    public WebElement ageInCard;
+
+    @FindBy(id = "idemail")
+    public WebElement emailInCard;
+
+    @FindBy(id = "idphone")
+    public WebElement phoneInCard;
+
+    @FindBy(id = "idwork")
+    public WebElement roleInCard;
+
+    @FindBy(id = "iddate")
+    public WebElement dateInCard;
+
     public void clickOnLibraryCardLink() {
         libraryCardLink.click();
     }
@@ -102,6 +120,17 @@ public class LibraryCardPageActions {
     public boolean isIDGenarated() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         return generatedIDCard.isDisplayed();
+    }
+
+    public String[] getCardData() {
+        String[] cardData = new String[6];
+        cardData[0] = nameInCard.getText();
+        cardData[1] = ageInCard.getText();
+        cardData[2] = emailInCard.getText();
+        cardData[3] = phoneInCard.getText();
+        cardData[4] = roleInCard.getText();
+        cardData[5] = dateInCard.getText();
+        return cardData;
     }
 
 }

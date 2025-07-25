@@ -6,11 +6,13 @@ import com.automation.setup.DriverSetup;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 import java.util.List;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class LibraryCardTest {
@@ -48,15 +50,29 @@ public class LibraryCardTest {
         libraryCardPageActions.clickOnSubmitBtn();
     }
 
-    @And("Library Card is Displayed")
+    @Then("Library Card is Displayed")
     public void libraryCardIsDisplayed() {
         assertTrue(libraryCardPageActions.isIDGenarated());
     }
 
-    @And("Close the Browser")
+    @Then("Close the Browser")
     public void closeBrowser() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.close();
+    }
+
+    @Then("Checked all details in generated ID card")
+    public void checkAllDetailsInGeneratedIDCard(DataTable dataTable) {
+        List<List<String>> data = dataTable.asLists(String.class);
+        String[] details = libraryCardPageActions.getCardData();
+        for(String detail : details) {
+            System.out.println(detail);
+        }
+        assertEquals(data.get(0).get(0).toString(), details[0]);
+        assertEquals(data.get(0).get(1).toString(), details[1]);
+        assertEquals(data.get(0).get(2).toString(), details[2]);
+        assertEquals(data.get(0).get(3).toString(), details[3]);
+        assertEquals(data.get(0).get(4).toString(), details[4]);
     }
 
 
