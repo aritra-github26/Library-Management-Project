@@ -4,4 +4,3 @@ Feature: # Enter feature name here
 
   Scenario: # Enter scenario name here
     # Enter steps here
-    Given Open the Membership Paga only
