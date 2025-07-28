@@ -19,3 +19,7 @@ Feature: Membership Registration and Verification
     # 3. Finally, verify the member was added
     When the user navigates to the members page again
     Then the new member with card number "LIB-CARD-98765" should be displayed
+
+  Scenario: # Enter scenario name here
+    # Enter steps here
+
