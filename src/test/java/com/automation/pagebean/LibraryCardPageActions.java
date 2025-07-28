@@ -1,11 +1,11 @@
 package com.automation.pagebean;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -74,6 +74,29 @@ public class LibraryCardPageActions {
     @FindBy(id = "iddate")
     public WebElement dateInCard;
 
+    @FindBy(id = "firstnameError")
+    public WebElement firstNameErrorMsg;
+
+    @FindBy(id = "lastnameError")
+    public WebElement lastNameErrorMsg;
+
+    @FindBy(id = "ageError")
+    public WebElement ageErrorMsg;
+
+    @FindBy(id = "emailError")
+    public WebElement emailErrorMsg;
+
+    @FindBy(id = "phoneError")
+    public WebElement phoneErrorMsg;
+
+    @FindBy(id = "workError")
+    public WebElement workErrorMsg;
+
+    @FindBy(id = "cardError")
+    public WebElement cardErrorMsg;
+
+    // Passing the data
+
     public void clickOnLibraryCardLink() {
         libraryCardLink.click();
     }
@@ -117,7 +140,9 @@ public class LibraryCardPageActions {
         submitBtn.click();
     }
 
-    public boolean isIDGenarated() {
+    // Check the generated library card
+
+    public boolean isIDGenerated() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         return generatedIDCard.isDisplayed();
     }
@@ -131,6 +156,43 @@ public class LibraryCardPageActions {
         cardData[4] = roleInCard.getText();
         cardData[5] = dateInCard.getText();
         return cardData;
+    }
+
+    // Check the error messages
+
+    public boolean isFirstNameErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return firstNameErrorMsg.isDisplayed();
+    }
+
+    public boolean isLastNameErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return lastNameErrorMsg.isDisplayed();
+    }
+
+    public boolean isAgeErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return ageErrorMsg.isDisplayed();
+    }
+
+    public boolean isEmailErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return emailErrorMsg.isDisplayed();
+    }
+
+    public boolean isPhoneErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return phoneErrorMsg.isDisplayed();
+    }
+
+    public boolean isWorkErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return workErrorMsg.isDisplayed();
+    }
+
+    public boolean isCardErrorVisible() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return cardErrorMsg.isDisplayed();
     }
 
 }
