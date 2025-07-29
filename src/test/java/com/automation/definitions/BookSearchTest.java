@@ -16,6 +16,7 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 //import java.util.concurrent.TimeUnit;
 
 public class BookSearchTest {
@@ -81,7 +82,33 @@ public class BookSearchTest {
         assertEquals(data.get(0).get(4).toString(), details[4]);
     }
 
+    //error messages
+    @Then("Please Select Edition is displayed")
+    public void pleaseSelectEditionIsDisplayed() {
+        assertTrue(bookSearchPageActions.isPleaseSelectEdition());
+    }
+
+    @Then("Please Select Format is displayed")
+    public void pleaseSelectFormatIsDisplayed() {
+        assertTrue(bookSearchPageActions.isPleaseSelectFormat());
+    }
+
+    @Then("Please Select AgeGroup is displayed")
+    public void pleaseSelectAgeGroupIsDisplayed() {
+        assertTrue(bookSearchPageActions.isPleaseSelectAgeGroup());
+    }
+
+    //No result is shown
+    @Then("No result is shown")
+    public void no_result_is_shown() {
+        Assert.assertFalse(bookSearchPageActions.isResultVisible());
+    }
 
 
+    @Then("Close The Browser")
+    public void closeTheBrowser() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.close();
+    }
 
 }

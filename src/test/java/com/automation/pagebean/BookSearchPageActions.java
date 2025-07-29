@@ -1,9 +1,11 @@
 package com.automation.pagebean;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -66,6 +68,17 @@ public class BookSearchPageActions {
     public WebElement AgeResult;
 
 
+    //Error messages
+    @FindBy(id = "ageGroupError")
+    public WebElement ageGroupError;
+
+    @FindBy(id = "editionError")
+    public WebElement editionError;
+
+    @FindBy(id = "formatError")
+    public WebElement formatError;
+
+
     public void clickOnSearchLink() {
         searchLink.click();
     }
@@ -120,6 +133,34 @@ public class BookSearchPageActions {
         bookData[4] = AgeResult.getText();
 
         return bookData;
+    }
+
+
+    //Check error messages
+    public boolean isPleaseSelectEdition() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return editionError.isDisplayed();
+    }
+
+    public boolean isPleaseSelectFormat() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return formatError.isDisplayed();
+    }
+
+    public boolean isPleaseSelectAgeGroup() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        return ageGroupError.isDisplayed();
+    }
+
+    //no result is shown
+    public boolean isResultVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        try {
+            wait.until(ExpectedConditions.visibilityOf(generatedBook));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
 
