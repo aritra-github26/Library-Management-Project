@@ -10,6 +10,7 @@ Feature: Advanced Book Search
       | Philip Roth | fiction | Edition 3 | E_Books | Adult |
     And Clicks the Search button
     Then Matching book results are displayed
+      | Philip Roth | 3 | Fiction | E_Books | adult |
 
     Scenario: Misspelled Author Name
       And User fills book search details

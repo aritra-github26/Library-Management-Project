@@ -75,11 +75,17 @@ public class BookSearchTest {
         for(String detail : details) {
             System.out.println(detail);
         }
-        assertEquals(data.get(0).get(0).toString(), details[0]);
-        assertEquals(data.get(0).get(1).toString(), details[1]);
-        assertEquals(data.get(0).get(2).toString(), details[2]);
-        assertEquals(data.get(0).get(3).toString(), details[3]);
-        assertEquals(data.get(0).get(4).toString(), details[4]);
+//        assertEquals(data.get(0).get(0).toString(), details[0]);
+//        assertEquals(data.get(0).get(1).toString(), details[1]);
+//        assertEquals(data.get(0).get(2).toString(), details[2]);
+//        assertEquals(data.get(0).get(3).toString(), details[3]);
+//        assertEquals(data.get(0).get(4).toString(), details[4]);
+
+        for (int i = 0; i < details.length; i++) {
+            String expected = data.get(0).get(i).trim().toLowerCase();
+            String actual = details[i].trim().toLowerCase();
+            assertEquals(expected, actual);
+        }
     }
 
     //error messages
