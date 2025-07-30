@@ -41,4 +41,9 @@ Feature: Advanced Book Search
       | Philip Roth | fiction | Edition 3 | E_Books |  |
     And Clicks the Search button
     Then Please Select AgeGroup is displayed
+
+
+  Scenario: All Books sections page
+    And Navigate to All Books Section
+    Then Books are displayed
     Then Close The Browser

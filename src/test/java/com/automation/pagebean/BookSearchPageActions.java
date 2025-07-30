@@ -1,5 +1,6 @@
 package com.automation.pagebean;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -78,6 +79,12 @@ public class BookSearchPageActions {
     @FindBy(id = "formatError")
     public WebElement formatError;
 
+    //All books section
+    @FindBy(id = "bookslink")
+    public WebElement bookLink;
+
+    @FindBy(id = "books")
+    public WebElement booksDiv;
 
     public void clickOnSearchLink() {
         searchLink.click();
@@ -162,6 +169,19 @@ public class BookSearchPageActions {
             return false;
         }
     }
+
+    //All books link
+    public void clickOnBookLink() {
+        bookLink.click();
+    }
+
+    public boolean isBooksSectionVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(booksDiv));
+        return booksDiv.isDisplayed();
+    }
+
+
 
 
 }

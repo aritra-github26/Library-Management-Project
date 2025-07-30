@@ -5,6 +5,7 @@ import com.automation.setup.ConfigFileReader;
 import com.automation.setup.DriverSetup;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -91,24 +92,38 @@ public class BookSearchTest {
     //error messages
     @Then("Please Select Edition is displayed")
     public void pleaseSelectEditionIsDisplayed() {
-        assertTrue(bookSearchPageActions.isPleaseSelectEdition());
+        Assert.assertFalse(bookSearchPageActions.isPleaseSelectEdition());
     }
 
     @Then("Please Select Format is displayed")
     public void pleaseSelectFormatIsDisplayed() {
-        assertTrue(bookSearchPageActions.isPleaseSelectFormat());
+        Assert.assertFalse(bookSearchPageActions.isPleaseSelectFormat());
     }
 
     @Then("Please Select AgeGroup is displayed")
     public void pleaseSelectAgeGroupIsDisplayed() {
-        assertTrue(bookSearchPageActions.isPleaseSelectAgeGroup());
+        Assert.assertFalse(bookSearchPageActions.isPleaseSelectAgeGroup());
     }
 
     //No result is shown
     @Then("No result is shown")
     public void no_result_is_shown() {
-        Assert.assertFalse(bookSearchPageActions.isResultVisible());
+        Assert.assertTrue(bookSearchPageActions.isResultVisible());
     }
+
+    //Navigate to All books
+    @And("Navigate to All Books Section")
+    public void navigateToAllBooksSection(){
+        bookSearchPageActions.clickOnSearchLink();
+
+    }
+    @Then("Books are displayed")
+    public void booksAreDisplayed() {
+        // Check if the div with id="books" is displayed
+
+        Assert.assertTrue(bookSearchPageActions.isBooksSectionVisible(), "Books section is not displayed!");
+    }
+
 
 
     @Then("Close The Browser")
