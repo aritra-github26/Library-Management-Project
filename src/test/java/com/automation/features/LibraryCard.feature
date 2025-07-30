@@ -66,4 +66,3 @@ Feature: Get a Library Card
     And Click on Submit Button
     Then Card action error message is displayed
     Then Library Card is not generated
-    Then Close the Browser

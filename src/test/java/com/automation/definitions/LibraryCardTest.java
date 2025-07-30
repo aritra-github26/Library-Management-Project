@@ -78,11 +78,11 @@ public class LibraryCardTest {
         assertTrue(libraryCardPageActions.isIDGenerated());
     }
 
-    @Then("Close the Browser")
-    public void closeBrowser() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.close();
-    }
+//    @Then("Close the Browser")
+//    public void closeBrowser() {
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        driver.close();
+//    }
 
     @Then("Checked all details in generated ID card")
     public void checkAllDetailsInGeneratedIDCard(DataTable dataTable) {
