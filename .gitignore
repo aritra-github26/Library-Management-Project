@@ -64,3 +64,5 @@ gradle-app.setting
 
 
 ## Conflicting
+target
+test-output
