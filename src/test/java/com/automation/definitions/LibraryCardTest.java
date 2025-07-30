@@ -28,7 +28,7 @@ public class LibraryCardTest {
     public void navigateToGetALibraryCardPage() {
         ConfigFileReader configFileReader = new ConfigFileReader();
         driver.get(configFileReader.getApplicationUrl());
-        driver.manage().window().maximize();
+
         libraryCardPageActions.clickOnLibraryCardLink();
     }
 
